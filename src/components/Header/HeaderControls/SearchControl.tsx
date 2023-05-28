@@ -23,7 +23,7 @@ export default function SearchControl({
           Search
         </Text>
         <Text weight={700} className={classes.shortcut}>
-          /
+          Ctrl + K
         </Text>
       </Group>
     </UnstyledButton>
