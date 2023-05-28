@@ -11,7 +11,7 @@ export default function Header({ navbarOpened, toggleNavbar }: HeaderProps) {
   return (
     <>
       <HeaderDesktop />
-      <HeaderMobile navbarOpened={true} toggleNavbar={toggleNavbar} />
+      <HeaderMobile navbarOpened={navbarOpened} toggleNavbar={toggleNavbar} />
     </>
   );
 }

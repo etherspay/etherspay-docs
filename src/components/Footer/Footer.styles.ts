@@ -27,10 +27,7 @@ export default createStyles((theme) => ({
       theme.colorScheme === "dark"
         ? theme.colors.dark[8]
         : theme.colors.gray[0],
-    position: "fixed",
-    bottom: 0,
-    left: 0,
-    right: 0,
+
     height: FOOTER_HEIGHT,
 
     [`@media (max-width: ${em(800)})`]: {

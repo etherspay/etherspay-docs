@@ -33,16 +33,15 @@ export const FOOTER_LINKS_DATA: LinksGroupProps[] = [
     ],
   },
   {
-    title: "Developers",
+    title: "Resources",
     data: [
-      { type: "link", label: "", link: meta.uiLink },
-      { type: "link", label: "Documentation", link: meta.docsLink },
+      { type: "link", label: "npm organization", link: meta.uiLink },
       {
         type: "link",
         label: "Github organization",
         link: meta.gitHubLinks.organization,
       },
-      { type: "link", label: "npm organization", link: meta.npmLink },
+      { type: "link", label: "Changelog", link: meta.npmLink },
     ],
   },
 ];

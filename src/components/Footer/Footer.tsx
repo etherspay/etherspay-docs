@@ -18,7 +18,6 @@ export function Footer({ withNavbar }: FooterProps) {
 
   return (
     <>
-      <div className={classes.spacer} />
       {/* <div className={cx(classes.wrapper, { [classes.withNavbar]: withNavbar })}> */}
       <div className={cx(classes.wrapper)}>
         <Container size={1100}>

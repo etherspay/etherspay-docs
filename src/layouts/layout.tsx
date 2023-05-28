@@ -5,10 +5,14 @@ import {
   ColorScheme,
   Global,
   rem,
+  Box,
 } from "@mantine/core";
 import { useHotkeys, useLocalStorage } from "@mantine/hooks";
 import { SpotlightProvider, spotlight } from "@mantine/spotlight";
 import { actions } from "../constants/SpotlightActions";
+import Header from "../components/Header/Header";
+import { HEADER_HEIGHT } from "../components/Header/HeaderDesktop.styles";
+import { Footer } from "../components/Footer/Footer";
 
 const THEME_KEY = "mantine-color-scheme";
 
@@ -18,6 +22,8 @@ export default function Layout({ children, location }: any) {
     defaultValue: "dark",
     getInitialValueInEffect: true,
   });
+
+  const [navBar, setNavBar] = useState(true);
 
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
@@ -58,8 +64,25 @@ export default function Layout({ children, location }: any) {
             })}
           />
           <div>
-            {/* <LayoutInner location={location}>{children}</LayoutInner> */}
-            {children}
+            <Box
+              sx={(theme) => ({
+                position: "relative",
+                zIndex: 1,
+                boxShadow: theme.shadows.sm,
+              })}
+            >
+              <Header
+                navbarOpened={navBar}
+                toggleNavbar={() => {
+                  setNavBar(!navBar);
+                }}
+              />
+              <div style={{ marginTop: rem(HEADER_HEIGHT) }}>
+                {/* <LayoutInner location={location}>{children}</LayoutInner> */}
+                {children}
+                <Footer />
+              </div>
+            </Box>
           </div>
         </SpotlightProvider>
       </MantineProvider>

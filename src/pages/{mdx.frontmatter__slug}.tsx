@@ -1,12 +1,12 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Seo from "../components/Seo";
+import Layout from "../layouts/Layout";
 
 const MdxPage: React.FC = ({ data, children }: any) => {
   return (
     <>
-      <p>{data.mdx.frontmatter.date}</p>
-      {children}
+      <Layout>{children}</Layout>
     </>
   );
 };
