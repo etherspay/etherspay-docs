@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Text, Group } from "@mantine/core";
+import { Container, Text, Group, Button, TextInput } from "@mantine/core";
 import { TwitterButton, DiscordButton } from "@mantine/ds";
 import { LinksGroup } from "./LinksGroup/LinksGroup";
 import { FOOTER_LINKS_DATA } from "./data";
@@ -38,9 +38,24 @@ export function Footer({ withNavbar }: FooterProps) {
                 Copyright &copy; {new Date().getFullYear()} Etherspay, All
                 rights reserved.
               </Text>
-              <div className={classes.social}>
-                <DiscordButton className={classes.socialButton} />
-                <TwitterButton className={classes.socialButton} ml="md" />
+
+              <div>
+                <Text color="dimmed" size="xs">
+                  Signup for developer updates
+                </Text>
+                <div className={classes.controls}>
+                  <TextInput
+                    type="email"
+                    placeholder="Your email"
+                    classNames={{
+                      input: classes.input,
+                      root: classes.inputWrapper,
+                    }}
+                  />
+                  <Button className={classes.control} variant="default">
+                    Signup
+                  </Button>
+                </div>
               </div>
             </Group>
           </div>

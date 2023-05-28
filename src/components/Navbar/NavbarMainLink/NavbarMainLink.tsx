@@ -39,11 +39,7 @@ export default function NavbarMainLink({
       {rawIcon ? (
         icon
       ) : (
-        <ThemeIcon
-          size={30}
-          sx={{ backgroundColor: color, color: theme.white }}
-          radius="lg"
-        >
+        <ThemeIcon size={30} variant="light" color={color} radius="lg">
           {icon}
         </ThemeIcon>
       )}

@@ -140,4 +140,24 @@ export default createStyles((theme) => ({
       marginTop: theme.spacing.md,
     },
   },
+
+  controls: {
+    display: "flex",
+  },
+
+  inputWrapper: {
+    width: "100%",
+    flex: "1",
+  },
+
+  input: {
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
+    borderRight: 0,
+  },
+
+  control: {
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+  },
 }));

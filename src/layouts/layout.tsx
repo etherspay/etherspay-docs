@@ -13,10 +13,43 @@ import { actions } from "../constants/SpotlightActions";
 import Header from "../components/Header/Header";
 import { HEADER_HEIGHT } from "../components/Header/HeaderDesktop.styles";
 import { Footer } from "../components/Footer/Footer";
+import { graphql, useStaticQuery } from "gatsby";
+import Navbar from "../components/Navbar/Navbar";
+import { getDocsData } from "../helpers/getDocsData";
+import { NAVBAR_WIDTH } from "../components/Navbar/Navbar.styles";
 
 const THEME_KEY = "mantine-color-scheme";
 
-export default function Layout({ children, location }: any) {
+const query = graphql`
+  {
+    allMdx {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            category
+            slug
+            description
+            product
+          }
+        }
+      }
+    }
+  }
+`;
+
+export interface LayoutProps {
+  children: React.ReactNode;
+  hideFooter?: boolean;
+  hideNavbar?: boolean;
+}
+
+export default function Layout({
+  children,
+  hideFooter,
+  hideNavbar,
+}: LayoutProps) {
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: THEME_KEY,
     defaultValue: "dark",
@@ -24,6 +57,12 @@ export default function Layout({ children, location }: any) {
   });
 
   const [navBar, setNavBar] = useState(true);
+  const [navbarOpened, setNavbarState] = useState(false);
+  // const shouldRenderHeader = !shouldExcludeHeader(location.pathname);
+  // const shouldRenderNavbar = !shouldExcludeNavbar(location.pathname) || navbarCollapsed;
+
+  // const data = getDocsData(useStaticQuery(query));
+  getDocsData(useStaticQuery(query));
 
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
@@ -48,7 +87,7 @@ export default function Layout({ children, location }: any) {
         withNormalizeCSS
         theme={{
           colorScheme,
-          headings: { fontFamily: "Greycliff CF, sans serif" },
+          primaryColor: "teal",
         }}
       >
         <SpotlightProvider shortcut="mod + K" actions={actions}>
@@ -63,12 +102,12 @@ export default function Layout({ children, location }: any) {
               },
             })}
           />
-          <div>
+          <main>
             <Box
               sx={(theme) => ({
                 position: "relative",
                 zIndex: 1,
-                boxShadow: theme.shadows.sm,
+                boxShadow: hideFooter ? "" : theme.shadows.sm,
               })}
             >
               <Header
@@ -77,13 +116,26 @@ export default function Layout({ children, location }: any) {
                   setNavBar(!navBar);
                 }}
               />
-              <div style={{ marginTop: rem(HEADER_HEIGHT) }}>
+              {hideNavbar ? null : (
+                <Navbar
+                  data={[]}
+                  opened={navbarOpened}
+                  onClose={() => setNavbarState(false)}
+                />
+              )}
+
+              <div
+                style={{
+                  marginTop: rem(HEADER_HEIGHT),
+                  marginLeft: rem(hideNavbar ? 0 : NAVBAR_WIDTH),
+                }}
+              >
                 {/* <LayoutInner location={location}>{children}</LayoutInner> */}
                 {children}
-                <Footer />
+                {!hideFooter && <Footer />}
               </div>
             </Box>
-          </div>
+          </main>
         </SpotlightProvider>
       </MantineProvider>
     </ColorSchemeProvider>

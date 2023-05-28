@@ -1,49 +1,35 @@
-import * as React from "react"
-import { Link, HeadFC, PageProps } from "gatsby"
+import React from "react";
+import { Link, PageProps } from "gatsby";
+import Layout from "../layouts/Layout";
+import Seo from "../components/Seo";
+import { Title, Container, Text, Button, Group } from "@mantine/core";
 
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-
-const NotFoundPage: React.FC<PageProps> = () => {
+const PageNotFound: React.FC<PageProps> = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
-  )
-}
+    <Layout hideFooter>
+      <Container size={1100} py={50}>
+        <Title order={1}>Page not found</Title>
+        <Text my={15}>
+          You've found a completely secret place on the Etherspay Documentation.
+          Unfortunately, this is only a 404 page. If you've landed on this page
+          from a link on the Etherspay Documentation, please create an issue.
+        </Text>
+        <Group spacing={10}>
+          <Button variant="default" component={Link} to="/">
+            Take me home
+          </Button>
+          <Button
+            variant="light"
+            component="a"
+            href="https://github.com/etherspay/docs/issues/new"
+          >
+            Create an issue
+          </Button>
+        </Group>
+      </Container>
+    </Layout>
+  );
+};
 
-export default NotFoundPage
-
-export const Head: HeadFC = () => <title>Not found</title>
+export const Head = () => <Seo title="Page not found" />;
+export default PageNotFound;
