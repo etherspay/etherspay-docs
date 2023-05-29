@@ -1,7 +1,7 @@
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
-  pathPrefix: "/",
+  pathPrefix: "/etherspay-docs-gatsby",
   siteMetadata: {
     title: `Etherspay Docs`,
     siteUrl: `https://docs.etherspay.com`,
