@@ -1,7 +1,6 @@
 export interface Frontmatter {
   title: string;
   description?: string;
-  props: string[];
   import: string;
   docs: string;
   source: string;
@@ -20,5 +19,4 @@ export interface Frontmatter {
   error?: string;
   componentPrefix?: string;
   hideToc?: boolean;
-  polymorphic?: boolean;
 }
