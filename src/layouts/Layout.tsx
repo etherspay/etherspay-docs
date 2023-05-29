@@ -29,10 +29,10 @@ const query = graphql`
           id
           frontmatter {
             title
-            category
+            group
             slug
             description
-            product
+            category
           }
         }
       }
@@ -64,8 +64,7 @@ export default function Layout({
   // const shouldRenderHeader = !shouldExcludeHeader(location.pathname);
   // const shouldRenderNavbar = !shouldExcludeNavbar(location.pathname) || navbarCollapsed;
 
-  // const data = getDocsData(useStaticQuery(query));
-  // getDocsData(useStaticQuery(query));
+  const data = getDocsData(useStaticQuery(query));
 
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
@@ -121,7 +120,7 @@ export default function Layout({
               />
               {hideNavbar ? null : (
                 <Navbar
-                  data={[]}
+                  data={data}
                   opened={navbarOpened}
                   onClose={() => setNavbarState(false)}
                 />

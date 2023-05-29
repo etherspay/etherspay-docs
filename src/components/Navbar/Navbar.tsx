@@ -1,14 +1,9 @@
 import React from "react";
-import { DEFAULT_THEME, ScrollArea, rem } from "@mantine/core";
+import { ScrollArea, rem } from "@mantine/core";
 import NavbarMainLink from "./NavbarMainLink/NavbarMainLink";
 import useStyles from "./Navbar.styles";
-import {
-  IconRocket,
-  IconStar,
-  IconCode,
-  IconHandRock,
-} from "@tabler/icons-react";
-import Icon from "../Icon";
+import { IconRocket, IconCode, IconHandRock } from "@tabler/icons-react";
+import NavbarDocsCategory from "./NavbarDocsCategory/NavbarDocsCategory";
 
 const mainLinks = [
   {
@@ -63,41 +58,6 @@ export default function Navbar({ data, opened, onClose }: NavbarProps) {
         <div className={classes.body}>
           {main}
           {/* <div className={classes.docs}>{docs}</div> */}
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, ut.
-          Quidem itaque eaque obcaecati eveniet at excepturi natus dolor
-          dignissimos qui reprehenderit quisquam omnis rem, et reiciendis
-          debitis quasi illo! Ut, accusantium hic! Architecto ullam qui tenetur
-          accusamus voluptates quo quos officia amet aspernatur quaerat,
-          nesciunt obcaecati consequuntur reiciendis mollitia voluptatibus
-          labore adipisci eos sit ducimus quasi culpa! Eos, dolorum! Harum cum
-          dolores exercitationem hic nulla doloremque, repellat labore ducimus
-          animi neque adipisci consectetur modi. Dolore, reprehenderit nulla,
-          repudiandae accusamus tempore error nam ut ab consectetur id,
-          architecto pariatur veniam. Totam inventore, nemo nobis eligendi
-          quisquam velit quos odio corrupti! Quo facere autem quaerat earum
-          dolor illo repellat incidunt molestiae voluptatibus repellendus, eos
-          amet saepe nemo consequuntur nostrum quidem officia. Eum non optio
-          reiciendis ut dolores dolore minima nesciunt perferendis!
-          Reprehenderit modi, eum molestiae commodi eaque, aspernatur in, nam
-          totam amet obcaecati atque corrupti consequatur corporis ipsa!
-          Accusamus, autem laudantium. Id error, ratione repellendus ut veniam,
-          porro ipsam maiores officiis sequi ipsum similique aliquam at cumque
-          saepe asperiores quas! Eveniet a unde, fugiat ipsum natus eligendi
-          autem iste provident esse! Necessitatibus facilis aspernatur non
-          perspiciatis doloremque illum dolor doloribus adipisci nostrum,
-          officia vitae, rerum repellat eveniet, possimus corrupti consectetur
-          ducimus. Harum numquam deserunt doloremque quisquam ullam voluptates
-          veniam aperiam minima! Labore vitae distinctio esse nam quos
-          dignissimos excepturi nihil vel commodi iusto natus illum, ipsa
-          voluptatem nobis et earum unde dolor in eum reiciendis ut voluptas
-          voluptates! Debitis, recusandae necessitatibus. Consectetur similique,
-          est consequuntur natus eaque fuga odio commodi facere ipsum amet
-          tenetur necessitatibus a impedit tempora minima dicta. Iure animi
-          fugit nostrum numquam, exercitationem mollitia consequatur natus
-          perferendis eaque. Natus illum neque molestiae adipisci quos hic id
-          saepe eveniet reprehenderit praesentium soluta, corrupti, placeat
-          omnis nihil laborum magnam in earum quasi perspiciatis delectus
-          distinctio quis iste fuga? Ullam, officiis.
         </div>
       </ScrollArea>
     </nav>
