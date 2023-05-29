@@ -7,6 +7,8 @@
   Documentation
 </h1>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/aaf6d344-4c02-4d5e-95aa-973514d0e9ab/deploy-status)](https://app.netlify.com/sites/etherspay-docs/deploys)
+
 ## Commit convention
 
 Mantine is a monorepo, thus it is important to write correct commit messages to keep the git history clean and consistent.
