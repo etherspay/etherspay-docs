@@ -65,7 +65,7 @@ export default function Layout({
   // const shouldRenderNavbar = !shouldExcludeNavbar(location.pathname) || navbarCollapsed;
 
   // const data = getDocsData(useStaticQuery(query));
-  getDocsData(useStaticQuery(query));
+  // getDocsData(useStaticQuery(query));
 
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));

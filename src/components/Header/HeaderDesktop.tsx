@@ -74,8 +74,8 @@ export default function HeaderDesktop() {
       <Group pr="md">
         <HeaderControls onSearch={spotlight.openSpotlight} />
         <Button
-          component={Link}
-          to="https://etherspay.com/dashboard"
+          component="a"
+          href="https://etherspay.com/dashboard"
           variant="default"
           h={34}
           radius="md"
