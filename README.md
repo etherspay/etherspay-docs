@@ -1,49 +1,30 @@
 <p align="center">
   <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+    <img alt="Gatsby" src="./src/images/etherspay-logo-text.svg" width="300" />
   </a>
 </p>
 <h1 align="center">
-  Gatsby Minimal TypeScript Starter
+  Documentation
 </h1>
 
-## 🚀 Quick start
+## Commit convention
 
-1.  **Create a Gatsby site.**
+Mantine is a monorepo, thus it is important to write correct commit messages to keep the git history clean and consistent.
+All commits made in this repository are divided into 3 groups:
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+- **package commits** Related to any particular package.
+- **docs commits** Related to the documentation.
+- **core commits** Only related to repository tooling and not associated with any package.
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby -- -ts
-    ```
+Commit messages consists of 3 parts:
 
-2.  **Start developing.**
+```
+[area] Optional title: Message
+```
 
-    Navigate into your new site’s directory and start it up.
+Examples:
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
-
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.tsx` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-## 🚀 Quick start (Netlify)
-
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
-
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+- `[core] Fix documentation deployment script` – Change made in repository script, it is not related to documentation or any package
+- `[docs] Update report issues link` – Change related to documentation website
+- `[@mantine/core] Button: Add theme focus styles` – Change in `@mantine/core` package at Button component
+- `[@mantine/hooks] use-list-state: Add remove handler` – Change in `@mantine/hooks` package at use-list-state hook

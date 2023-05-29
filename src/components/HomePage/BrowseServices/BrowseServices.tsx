@@ -48,7 +48,7 @@ export default function BrowseServices() {
   ));
 
   return (
-    <Container size={1100} pb={100}>
+    <Container size={1100} py={rem(100)}>
       <Link
         style={{
           textDecoration: "none",
