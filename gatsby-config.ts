@@ -1,7 +1,6 @@
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
-  pathPrefix: "/etherspay-docs-gatsby",
   siteMetadata: {
     title: `Etherspay Docs`,
     siteUrl: `https://docs.etherspay.com`,
@@ -12,7 +11,6 @@ const config: GatsbyConfig = {
   graphqlTypegen: true,
   plugins: [
     "gatsby-plugin-image",
-    "gatsby-plugin-mantine",
     "gatsby-plugin-sitemap",
     {
       resolve: "gatsby-plugin-manifest",
