@@ -62,7 +62,15 @@ export default function BrowseServices() {
           Browse services <IconLink size={16} />
         </Title>
       </Link>
-      <SimpleGrid cols={3} my={20}>
+      <SimpleGrid
+        cols={3}
+        my={20}
+        breakpoints={[
+          { maxWidth: "62rem", cols: 3, spacing: "md" },
+          { maxWidth: "48rem", cols: 2, spacing: "sm" },
+          { maxWidth: "36rem", cols: 1, spacing: "sm" },
+        ]}
+      >
         {links}
       </SimpleGrid>
     </Container>

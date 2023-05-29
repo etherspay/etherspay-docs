@@ -6,6 +6,7 @@ import {
   Global,
   rem,
   Box,
+  Container,
 } from "@mantine/core";
 import { useHotkeys, useLocalStorage } from "@mantine/hooks";
 import { SpotlightProvider, spotlight } from "@mantine/spotlight";
@@ -43,12 +44,14 @@ export interface LayoutProps {
   children: React.ReactNode;
   hideFooter?: boolean;
   hideNavbar?: boolean;
+  homePage?: boolean;
 }
 
 export default function Layout({
   children,
   hideFooter,
   hideNavbar,
+  homePage,
 }: LayoutProps) {
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: THEME_KEY,
@@ -131,7 +134,14 @@ export default function Layout({
                 }}
               >
                 {/* <LayoutInner location={location}>{children}</LayoutInner> */}
-                {children}
+
+                {homePage ? (
+                  children
+                ) : (
+                  <Container size={1100} pt={30} pb={rem(80)}>
+                    {children}
+                  </Container>
+                )}
                 {!hideFooter && <Footer />}
               </div>
             </Box>

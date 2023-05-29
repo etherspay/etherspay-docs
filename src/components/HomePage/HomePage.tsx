@@ -8,7 +8,7 @@ import { Waves } from "./Waves/Waves";
 
 export const HomePage: React.FC<PageProps> = () => {
   return (
-    <Layout hideNavbar>
+    <Layout hideNavbar homePage>
       <Hero />
       <Waves height={40} width={150} />
       <TryItOut />

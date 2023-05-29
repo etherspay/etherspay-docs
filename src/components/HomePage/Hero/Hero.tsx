@@ -136,7 +136,12 @@ export default function Hero() {
           </Container>
 
           <div className={classes.controls}>
-            <Button className={classes.control} size="lg">
+            <Button
+              component={Link}
+              to="/payments/introduction"
+              className={classes.control}
+              size="lg"
+            >
               Get started with Payments
             </Button>
             <Button

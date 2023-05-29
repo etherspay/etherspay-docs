@@ -1,6 +1,12 @@
 import React from "react";
-import { Container, Text, Group, Button, TextInput } from "@mantine/core";
-import { TwitterButton, DiscordButton } from "@mantine/ds";
+import {
+  Container,
+  Text,
+  Group,
+  Button,
+  TextInput,
+  Anchor,
+} from "@mantine/core";
 import { LinksGroup } from "./LinksGroup/LinksGroup";
 import { FOOTER_LINKS_DATA } from "./data";
 import useStyles from "./Footer.styles";
@@ -27,6 +33,17 @@ export function Footer({ withNavbar }: FooterProps) {
               <Text className={classes.description} size="sm">
                 Unified Web3 solutions for the modern internet
               </Text>
+              <Text className={classes.description} fw="normal" size="sm">
+                Powered by{" "}
+                <Anchor
+                  target="_blank"
+                  td="underline"
+                  color="dimmed"
+                  href="https://mdxjs.com/"
+                >
+                  Mdx
+                </Anchor>
+              </Text>
             </div>
 
             <div className={classes.groups}>{groups}</div>
@@ -39,23 +56,18 @@ export function Footer({ withNavbar }: FooterProps) {
                 rights reserved.
               </Text>
 
-              <div>
-                <Text color="dimmed" size="xs">
-                  Signup for developer updates
-                </Text>
-                <div className={classes.controls}>
-                  <TextInput
-                    type="email"
-                    placeholder="Your email"
-                    classNames={{
-                      input: classes.input,
-                      root: classes.inputWrapper,
-                    }}
-                  />
-                  <Button className={classes.control} variant="default">
-                    Signup
-                  </Button>
-                </div>
+              <div className={classes.controls}>
+                <TextInput
+                  type="email"
+                  placeholder="Your email"
+                  classNames={{
+                    input: classes.input,
+                    root: classes.inputWrapper,
+                  }}
+                />
+                <Button className={classes.control} variant="default">
+                  Signup
+                </Button>
               </div>
             </Group>
           </div>

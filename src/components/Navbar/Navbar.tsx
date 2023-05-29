@@ -29,12 +29,6 @@ const mainLinks = [
     color: "teal",
     icon: IconCode,
   },
-  {
-    to: "/pages/about/",
-    label: "Etherspay Wallet",
-    color: "teal",
-    icon: (props: any) => <Icon />,
-  },
 ];
 
 interface NavbarProps {

@@ -8,6 +8,11 @@ import {
   IconNotebook,
   IconBold,
   IconSlideshow,
+  IconCurrencyBitcoin,
+  IconBox,
+  IconReceipt,
+  IconLink,
+  IconRecycle,
 } from "@tabler/icons-react";
 import StartPayment from "./Demos/StartPayment";
 
@@ -17,39 +22,39 @@ export default function TryItOut() {
   const data = [
     {
       demo: StartPayment,
-      icon: IconForms,
-      name: "Inputs",
-      description: "20+ input components",
+      icon: IconCurrencyBitcoin,
+      name: "Make a payment",
+      description: "Initiate a payment",
     },
     {
       demo: StartPayment,
-      icon: IconCalendar,
-      name: "Date pickers",
-      description: "Calendar, date pickers, time inputs",
+      icon: IconBox,
+      name: "Products",
+      description: "Create a new product programmatically",
     },
     {
       demo: StartPayment,
-      icon: IconStack2,
-      name: "Overlays & Navigation",
-      description: "Modal, HoverCard, Tabs, Stepper",
+      icon: IconReceipt,
+      name: "Coupons",
+      description: "Issue a coupon to customers",
     },
     {
       demo: StartPayment,
       icon: IconNotebook,
-      name: "Content",
-      description: "Accordion, Timeline",
+      name: "Balance",
+      description: "Fetch your project balance",
     },
     {
       demo: StartPayment,
-      icon: IconBold,
-      name: "Rich text editor",
-      description: "Tiptap based rich text editor",
+      icon: IconLink,
+      name: "Payment links",
+      description: "Create customized payment links",
     },
     {
       demo: StartPayment,
-      icon: IconSlideshow,
-      name: "Carousel",
-      description: "Embla based carousel",
+      icon: IconRecycle,
+      name: "Escrow session",
+      description: "Create an escrow session",
     },
   ];
 
