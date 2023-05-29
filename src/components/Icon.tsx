@@ -6,13 +6,8 @@ interface IconProps {
   height?: number;
 }
 
-export default function Logo({ width, height }: IconProps) {
+export default function Icon() {
   return (
-    <StaticImage
-      src="../images/icon.png"
-      alt="Etherspay Icon"
-      width={width}
-      height={height}
-    />
+    <StaticImage src="../images/icon.png" alt="Etherspay Icon" width={48} />
   );
 }
