@@ -59,8 +59,7 @@ export default function Layout({
     getInitialValueInEffect: true,
   });
 
-  const [navBar, setNavBar] = useState(true);
-  const [navbarOpened, setNavbarState] = useState(false);
+  const [navBar, setNavBar] = useState(false);
   // const shouldRenderHeader = !shouldExcludeHeader(location.pathname);
   // const shouldRenderNavbar = !shouldExcludeNavbar(location.pathname) || navbarCollapsed;
 
@@ -115,14 +114,23 @@ export default function Layout({
               <Header
                 navbarOpened={navBar}
                 toggleNavbar={() => {
-                  setNavBar(!navBar);
+                  console.log("toggle navbar");
+                  setNavBar((o) => !o);
                 }}
               />
-              {hideNavbar ? null : (
+              {!hideNavbar && (
                 <Navbar
                   data={[]}
-                  opened={navbarOpened}
-                  onClose={() => setNavbarState(false)}
+                  opened={navBar}
+                  onClose={() => setNavBar(false)}
+                />
+              )}
+
+              {navBar && (
+                <Navbar
+                  data={[]}
+                  opened={navBar}
+                  onClose={() => setNavBar(false)}
                 />
               )}
 
