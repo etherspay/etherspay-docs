@@ -9,9 +9,7 @@ export default function MdxTitle({
 }: React.ComponentPropsWithoutRef<typeof Title>) {
   const { classes } = useStyles();
 
-  // generate an id from the children, no spaces, all lowercase, and dashes instead of spaces
-
-  const gId = children!
+  const uId = children!
     .toString()
     .toLowerCase()
     .replace(/\s+/g, "-")
@@ -30,14 +28,14 @@ export default function MdxTitle({
 
   return (
     <>
-      <div id={gId} className={classes.offset} />
+      <div id={uId} className={classes.offset} />
       <Title
         order={order}
         className={classes.title}
         sx={{ fontWeight: 600 }}
         {...others}
       >
-        <a className={classes.link} href={`#${gId}`}>
+        <a className={classes.link} href={`#${uId}`}>
           {children}
         </a>
       </Title>
