@@ -120,7 +120,7 @@ export default function Layout({
               />
               {hideNavbar ? null : (
                 <Navbar
-                  data={data}
+                  data={[]}
                   opened={navbarOpened}
                   onClose={() => setNavbarState(false)}
                 />

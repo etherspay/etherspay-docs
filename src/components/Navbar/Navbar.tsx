@@ -4,6 +4,8 @@ import NavbarMainLink from "./NavbarMainLink/NavbarMainLink";
 import useStyles from "./Navbar.styles";
 import { IconRocket, IconCode, IconHandRock } from "@tabler/icons-react";
 import NavbarDocsCategory from "./NavbarDocsCategory/NavbarDocsCategory";
+import { Group } from "../../settings/types";
+import { getDocsData } from "../../helpers/getDocsData";
 
 const mainLinks = [
   {
@@ -27,8 +29,7 @@ const mainLinks = [
 ];
 
 interface NavbarProps {
-  //   data: ReturnType<typeof getDocsData>;
-  data: any;
+  data: ReturnType<typeof getDocsData>[];
   opened: boolean;
   onClose(): void;
 }
@@ -48,9 +49,9 @@ export default function Navbar({ data, opened, onClose }: NavbarProps) {
     </NavbarMainLink>
   ));
 
-  // const docs = data.map((group) => (
-  //   <NavbarDocsCategory group={group} key={group.group} onLinkClick={onClose} />
-  // ));
+  const docs = data.map((group: Group[]) => (
+    <NavbarDocsCategory group={group} key={group.group} onLinkClick={onClose} />
+  ));
 
   return (
     <nav className={cx(classes.navbar, { [classes.opened]: opened })}>
