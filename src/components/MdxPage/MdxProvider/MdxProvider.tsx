@@ -19,7 +19,7 @@ export const components = {
   h6: h(6),
   inlineCode: (props: any) => <Code {...props} />,
   a: (props: any) => {
-    // IF link is external, use <Anchor> component, else use <Link> component
+    // If link is external, use <Anchor> component, else use <Link> component
     if (!props.href.startsWith("https://docs.etherspay.com")) {
       return <Anchor {...props} />;
     } else {
