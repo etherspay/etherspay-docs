@@ -1,6 +1,6 @@
 import React from "react";
 import { MDXProvider } from "@mdx-js/react";
-import { Code, Anchor, rem, Title } from "@mantine/core";
+import { Code, Anchor, rem, Title, Mark } from "@mantine/core";
 import { Prism } from "@mantine/prism";
 import { Link } from "gatsby";
 import MdxTitle from "../MdxTitle/MdxTitle";
