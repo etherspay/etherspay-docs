@@ -9,24 +9,26 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/aaf6d344-4c02-4d5e-95aa-973514d0e9ab/deploy-status)](https://app.netlify.com/sites/etherspay-docs/deploys)
 
-## Commit convention
+## 🚀 Quick start
 
-Mantine is a monorepo, thus it is important to write correct commit messages to keep the git history clean and consistent.
-All commits made in this repository are divided into 3 groups:
+1.  **Clone the repository**
 
-- **package commits** Related to any particular package.
-- **docs commits** Related to the documentation.
-- **core commits** Only related to repository tooling and not associated with any package.
+    ```shell
+    git clone https://github.com/etherspay/etherspay-docs.git
+    ```
 
-Commit messages consists of 3 parts:
+2.  **Start developing.**
 
-```
-[area] Optional title: Message
-```
+    Navigate into your new site’s directory and start it up.
 
-Examples:
+    ```shell
+    cd etherspay-docs/
+    yarn install
+    yarn start
+    ```
 
-- `[core] Fix documentation deployment script` – Change made in repository script, it is not related to documentation or any package
-- `[docs] Update report issues link` – Change related to documentation website
-- `[@mantine/core] Button: Add theme focus styles` – Change in `@mantine/core` package at Button component
-- `[@mantine/hooks] use-list-state: Add remove handler` – Change in `@mantine/hooks` package at use-list-state hook
+3.  **Open the source code and start editing!**
+
+## More information
+
+[Etherspay Whitepaper](https://www.notion.so/15e3740da9d043a09e724d436dd65668)
