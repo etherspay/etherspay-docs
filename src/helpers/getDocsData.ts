@@ -1,19 +1,22 @@
-import { Frontmatter } from "../types";
+import { IconCurrencyBitcoin } from "@tabler/icons-react";
+import { SERVICES_CATEGORIES } from "../settings/categories/services";
+import { Category, MdxNode } from "../settings/types";
 
 export interface DocsQuery {
   allMdx: {
     edges: {
-      node: { frontmatter: Frontmatter };
+      node: MdxNode;
     }[];
   };
 }
 
-export interface Node {
-  frontmatter: Frontmatter;
+export interface Group {
+  title: string;
+  categories: Category[];
 }
 
-function groupDocs(nodes: Node[]) {
-  const groups = {} as { [group: string]: Node[] };
+function groupDocs(nodes: MdxNode[]) {
+  const groups: Group[] = [];
 
   nodes.forEach((node) => {
     const group = node.frontmatter.group;
@@ -24,11 +27,28 @@ function groupDocs(nodes: Node[]) {
     }
 
     // If the group doesn't exist yet, create it
-    if (!groups[group!]) {
-      groups[group!] = [];
+    if (!groups.some((g) => g.title === group)) {
+      groups.push({
+        title: group,
+        categories: [],
+      });
     }
 
-    groups[group!].push(node);
+    // Get the category of the node
+    const category = node.frontmatter.category;
+
+    // If the category doesn't exist yet, TODO
+    if (!category) {
+      return;
+    }
+
+    groups
+      .find((g) => g.title === group)!
+      .categories.push({
+        title: category,
+        icon: IconCurrencyBitcoin,
+        nodes: [node],
+      });
   });
 
   return groups;
@@ -37,6 +57,5 @@ function groupDocs(nodes: Node[]) {
 export function getDocsData(query: DocsQuery) {
   const nodes = query.allMdx.edges.map((edge) => edge.node);
   const data = groupDocs(nodes);
-  console.log(data);
   return data;
 }

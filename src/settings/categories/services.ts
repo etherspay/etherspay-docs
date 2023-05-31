@@ -10,5 +10,6 @@ export const SERVICES_CATEGORIES: Record<
   payments: {
     title: "Payments",
     icon: IconCurrencyBitcoin,
+    nodes: [],
   },
 };
