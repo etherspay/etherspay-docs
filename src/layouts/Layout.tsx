@@ -8,8 +8,9 @@ import {
   Box,
   Container,
   Anchor,
+  em,
 } from "@mantine/core";
-import { useHotkeys, useLocalStorage } from "@mantine/hooks";
+import { useHotkeys, useLocalStorage, useMediaQuery } from "@mantine/hooks";
 import { SpotlightProvider, spotlight } from "@mantine/spotlight";
 import { actions } from "../constants/SpotlightActions";
 import Header from "../components/Header/Header";
@@ -18,7 +19,10 @@ import { Footer } from "../components/Footer/Footer";
 import { Link, graphql, useStaticQuery } from "gatsby";
 import Navbar from "../components/Navbar/Navbar";
 import { getDocsData } from "../helpers/getDocsData";
-import { NAVBAR_WIDTH } from "../components/Navbar/Navbar.styles";
+import {
+  NAVBAR_BREAKPOINT,
+  NAVBAR_WIDTH,
+} from "../components/Navbar/Navbar.styles";
 import MDXProvider from "../components/MdxPage/MdxProvider/MdxProvider";
 
 const THEME_KEY = "mantine-color-scheme";
@@ -139,7 +143,13 @@ export default function Layout({
               <div
                 style={{
                   marginTop: rem(HEADER_HEIGHT),
-                  marginLeft: rem(hideNavbar ? 0 : NAVBAR_WIDTH),
+                  marginLeft: rem(
+                    hideNavbar
+                      ? 0
+                      : useMediaQuery(`(max-width: ${em(NAVBAR_BREAKPOINT)})`)
+                      ? 0
+                      : NAVBAR_WIDTH
+                  ),
                 }}
               >
                 {/* <LayoutInner location={location}>{children}</LayoutInner> */}
