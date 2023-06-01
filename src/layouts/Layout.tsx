@@ -24,6 +24,7 @@ import {
   NAVBAR_WIDTH,
 } from "../components/Navbar/Navbar.styles";
 import MDXProvider from "../components/MdxPage/MdxProvider/MdxProvider";
+import TableOfContents from "../components/MdxPage/TableOfContents/TableOfContents";
 
 const THEME_KEY = "mantine-color-scheme";
 
@@ -33,6 +34,7 @@ const query = graphql`
       edges {
         node {
           id
+          tableOfContents
           frontmatter {
             title
             group
@@ -157,9 +159,22 @@ export default function Layout({
                 {homePage ? (
                   children
                 ) : (
-                  <Container size={1100} pt={30} pb={rem(80)}>
-                    <MDXProvider>{children}</MDXProvider>
-                  </Container>
+                  <>
+                    <div>
+                      <TableOfContents
+                        headings={[
+                          {
+                            value: "Heading 1",
+                            depth: 1,
+                          },
+                        ]}
+                        withTabs={false}
+                      />
+                    </div>
+                    <Container size={1100} pt={30} pb={rem(80)}>
+                      <MDXProvider>{children}</MDXProvider>
+                    </Container>
+                  </>
                 )}
                 {!hideFooter && <Footer />}
               </div>

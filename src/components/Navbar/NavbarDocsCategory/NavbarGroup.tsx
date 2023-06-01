@@ -3,19 +3,35 @@ import { Link } from "gatsby";
 import { IconChevronDown } from "@tabler/icons-react";
 import { Text } from "@mantine/core";
 import { useLocation } from "@reach/router";
-import { getDocsData } from "../../../helpers/getDocsData";
 import useStyles from "./NavbarGroup.styles";
-import { HEADER_HEIGHT } from "../../Header/HeaderDesktop.styles";
-import { Category, Group } from "../../../settings/types";
+import { Group } from "../../../settings/types";
 
 interface NavbarGroupCategoryProps {
   group: Group;
 }
 
+function hasActiveLink(group: Group, pathname: string) {
+  console.log("group: ", group);
+  console.log("pathname: ", pathname);
+  if (group.uncategorized?.some((node) => node.frontmatter.slug === pathname)) {
+    return true;
+  }
+
+  if (
+    group.categories.some((category) =>
+      category.nodes.some((node) => node.frontmatter.slug === pathname)
+    )
+  ) {
+    return true;
+  }
+
+  return false;
+}
+
 export default function NavbarGroup({ group }: NavbarGroupCategoryProps) {
   const { classes, cx } = useStyles();
   const { pathname } = useLocation();
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(!hasActiveLink(group, pathname));
   const itemRefs = useRef<Record<string, HTMLElement>>({});
 
   const uncategorized = group.uncategorized?.map((node) => (
