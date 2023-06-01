@@ -1,6 +1,7 @@
 import { IconCurrencyBitcoin } from "@tabler/icons-react";
 import { SERVICES_CATEGORIES } from "../settings/categories/services";
 import { Category, MdxNode } from "../settings/types";
+import { categorized } from "../settings";
 
 export interface DocsQuery {
   allMdx: {
@@ -60,7 +61,7 @@ function groupDocs(nodes: MdxNode[]) {
       .find((g) => g.title === group)!
       .categories.push({
         title: category,
-        icon: IconCurrencyBitcoin,
+        icon: categorized[group].categories[category].icon,
         nodes: [node],
       });
   });
