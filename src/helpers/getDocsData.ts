@@ -42,6 +42,20 @@ function groupDocs(nodes: MdxNode[]) {
       return;
     }
 
+    // If the category already exists, add the node to it
+    if (
+      // The category exists in the group
+      groups
+        .find((g) => g.title === group)!
+        .categories.some((c) => c.title === category)
+    ) {
+      groups
+        .find((g) => g.title === group)!
+        .categories.find((c) => c.title === category)!
+        .nodes.push(node);
+      return;
+    }
+
     groups
       .find((g) => g.title === group)!
       .categories.push({
