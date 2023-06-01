@@ -7,6 +7,7 @@ import {
   rem,
   Box,
   Container,
+  Anchor,
 } from "@mantine/core";
 import { useHotkeys, useLocalStorage } from "@mantine/hooks";
 import { SpotlightProvider, spotlight } from "@mantine/spotlight";
@@ -14,10 +15,11 @@ import { actions } from "../constants/SpotlightActions";
 import Header from "../components/Header/Header";
 import { HEADER_HEIGHT } from "../components/Header/HeaderDesktop.styles";
 import { Footer } from "../components/Footer/Footer";
-import { graphql, useStaticQuery } from "gatsby";
+import { Link, graphql, useStaticQuery } from "gatsby";
 import Navbar from "../components/Navbar/Navbar";
 import { getDocsData } from "../helpers/getDocsData";
 import { NAVBAR_WIDTH } from "../components/Navbar/Navbar.styles";
+import MDXProvider from "../components/MdxPage/MdxProvider/MdxProvider";
 
 const THEME_KEY = "mantine-color-scheme";
 
@@ -59,8 +61,7 @@ export default function Layout({
     getInitialValueInEffect: true,
   });
 
-  const [navBar, setNavBar] = useState(true);
-  const [navbarOpened, setNavbarState] = useState(false);
+  const [navBar, setNavBar] = useState(false);
   // const shouldRenderHeader = !shouldExcludeHeader(location.pathname);
   // const shouldRenderNavbar = !shouldExcludeNavbar(location.pathname) || navbarCollapsed;
 
@@ -115,14 +116,23 @@ export default function Layout({
               <Header
                 navbarOpened={navBar}
                 toggleNavbar={() => {
-                  setNavBar(!navBar);
+                  console.log("toggle navbar");
+                  setNavBar((o) => !o);
                 }}
               />
-              {hideNavbar ? null : (
+              {!hideNavbar && (
                 <Navbar
-                  data={[]}
-                  opened={navbarOpened}
-                  onClose={() => setNavbarState(false)}
+                  data={data}
+                  opened={navBar}
+                  onClose={() => setNavBar(false)}
+                />
+              )}
+
+              {navBar && (
+                <Navbar
+                  data={data}
+                  opened={navBar}
+                  onClose={() => setNavBar(false)}
                 />
               )}
 
@@ -138,7 +148,7 @@ export default function Layout({
                   children
                 ) : (
                   <Container size={1100} pt={30} pb={rem(80)}>
-                    {children}
+                    <MDXProvider>{children}</MDXProvider>
                   </Container>
                 )}
                 {!hideFooter && <Footer />}

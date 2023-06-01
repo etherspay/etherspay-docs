@@ -11,7 +11,7 @@ slug: /payments/introduction
 
 ## Creating your first project
 
-In order to create your first project you will need to create an Etherspay account, you can create an account at [<mark>https://etherspay.com/</mark>](https://etherspay.com/login)
+In order to create your first project you will need to create an Etherspay account, you can create an account at [https://etherspay.com/](https://etherspay.com/login)
 
 Once you made a project you will be able to create payment links, customers, payments, ..
 
@@ -30,31 +30,20 @@ Before adding any token, you need to have at least one active network.
 - Polygon
 - Testnets
 
-## Next steps
+## Javascript SDK
 
-<table data-view="cards">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Accept online payments</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Create payment links</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Invoice a customer</td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+```javascript
+import { ethers } from "ethers";
+import { Etherspay } from "@etherspay/sdk";
+
+const provider = new ethers.providers.Web3Provider(window.ethereum);
+const etherspay = new Etherspay(provider, {
+  projectId: "YOUR_PROJECT_ID",
+});
+
+const payment = await etherspay.createPayment({
+  amount: ethers.utils.parseEther("0.1"),
+  currency: "ETH",
+  description: "My first payment",
+});
+```

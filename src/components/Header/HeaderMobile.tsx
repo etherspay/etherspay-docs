@@ -3,7 +3,6 @@ import useStyles from "./HeaderMobile.styles";
 
 import { Burger, Button, Group } from "@mantine/core";
 import { ColorSchemeControl } from "@mantine/ds";
-import { StaticImage } from "gatsby-plugin-image";
 import Logo from "../Logo";
 
 interface HeaderProps {
