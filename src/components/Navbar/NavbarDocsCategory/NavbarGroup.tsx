@@ -6,83 +6,44 @@ import { useLocation } from "@reach/router";
 import { getDocsData } from "../../../helpers/getDocsData";
 import useStyles from "./NavbarGroup.styles";
 import { HEADER_HEIGHT } from "../../Header/HeaderDesktop.styles";
-import { Group } from "../../../settings/types";
+import { Category, Group } from "../../../settings/types";
 
 interface NavbarGroupCategoryProps {
-  group: Group[];
-  onLinkClick(): void;
+  group: Group;
 }
 
-export default function NavbarGroup({
-  group,
-  onLinkClick,
-}: NavbarGroupCategoryProps) {
+export default function NavbarGroup({ group }: NavbarGroupCategoryProps) {
   const { classes, cx } = useStyles();
   const { pathname } = useLocation();
   const [collapsed, setCollapsed] = useState(false);
   const itemRefs = useRef<Record<string, HTMLElement>>({});
 
-  // useEffect(() => {
-  //   if (hasActiveLink(group, pathname) && itemRefs.current[pathname]) {
-  //     const element = itemRefs.current[pathname];
-  //     const height = typeof window !== "undefined" ? window.innerHeight : 0;
-  //     const { top, bottom } = element.getBoundingClientRect();
+  const categorized = group.categories?.map((category) => {
+    const links = category.nodes.map((node) => (
+      <Link
+        key={node.frontmatter.slug}
+        className={classes.link}
+        activeClassName={classes.linkActive}
+        to={node.frontmatter.slug}
 
-  //     if (top < HEADER_HEIGHT || bottom > height) {
-  //       element.scrollIntoView({ block: "center" });
-  //     }
-  //   }
-  // }, [pathname]);
+        // ref={(r) => {
+        //   itemRefs.current[node.frontmatter.slug] = r;
+        // }}
+      >
+        {node.frontmatter.title}
+      </Link>
+    ));
 
-  // const uncategorized = (
-
-  //     : group.uncategorized
-  // ).map((link: any) => (
-  //   <Link
-  //     key={link.slug}
-  //     className={classes.link}
-  //     activeClassName={classes.linkActive}
-  //     to={link.slug}
-  //     onClick={onLinkClick}
-  //     ref={(r: any) => {
-  //       itemRefs.current[link.slug] = r;
-  //     }}
-  //   >
-  //     {link.title}
-  //   </Link>
-  // ));
-
-  const categorized = !Array.isArray(group.pages)
-    ? []
-    : group.groups.map((part: any) => {
-        if (!part || !Array.isArray(part.pages)) {
-          return null;
-        }
-        const links = part.pages.map((link: any) => (
-          <Link
-            key={link.slug}
-            className={classes.link}
-            activeClassName={classes.linkActive}
-            to={link.slug}
-            onClick={onLinkClick}
-            ref={(r: any) => {
-              itemRefs.current[link.slug] = r;
-            }}
-          >
-            {link.title}
-          </Link>
-        ));
-
-        return (
-          <div className={classes.innerCategory} key={part.category.title}>
-            <Text className={classes.innerCategoryTitle}>
-              <part.category.icon className={classes.innerCategoryIcon} />
-              {part.category.title}
-            </Text>
-            {links}
-          </div>
-        );
-      });
+    return (
+      <div className={classes.innerCategory} key={category.title}>
+        <Text className={classes.innerCategoryTitle} tt="capitalize">
+          <category.icon className={classes.innerCategoryIcon} />
+          {category.title}
+        </Text>
+        {links}
+      </div>
+    );
+  });
 
   return (
     <div
@@ -104,11 +65,11 @@ export default function NavbarGroup({
           size="xs"
           transform="uppercase"
         >
-          {group.group.replace("-", " ")}
+          {group.title}
         </Text>
       </button>
-      {!collapsed && uncategorized}
-      {!collapsed && categorized}
+
+      {categorized}
     </div>
   );
 }

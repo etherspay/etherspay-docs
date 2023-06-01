@@ -1,0 +1,49 @@
+---
+title: Introduction
+description: Get started with Etherspay Escrow
+date: 2021-05-28
+category: escrow
+group: services
+slug: /escrow/introduction
+---
+
+# Getting started
+
+## Creating your first project
+
+In order to create your first project you will need to create an Etherspay account, you can create an account at [https://etherspay.com/](https://etherspay.com/login)
+
+Once you made a project you will be able to create payment links, customers, payments, ..
+
+There are different ways to actually integrate Etherspay into your own project such as our REST API or the Javascript SDK
+
+## Add payment methods
+
+Before you can start accepting crypto payments, you must select which crypto tokens you want to accept as a legitimate payment method.
+
+You can manage your payment methods in your payment settings.
+
+Before adding any token, you need to have at least one active network.
+
+- Ethereum
+- Binance Smart Chain
+- Polygon
+- Testnets
+
+## Javascript SDK
+
+```javascript
+import { ethers } from "ethers";
+import { Etherspay } from "@etherspay/sdk";
+
+const provider = new ethers.providers.Web3Provider(window.ethereum);
+const etherspay = new Etherspay(provider, {
+  projectId: "YOUR_PROJECT_ID",
+});
+
+const payment = await etherspay.createPayment({
+  amount: ethers.utils.parseEther("0.1"),
+  currency: "ETH",
+  description: "My first payment",
+});
+```

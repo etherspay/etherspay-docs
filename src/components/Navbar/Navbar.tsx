@@ -52,7 +52,7 @@ export default function Navbar({ data, opened, onClose }: NavbarProps) {
   // data var is an object with group name as key and array of docs as value, convert it to array of arrays
 
   const docs = data.map((group: Group) => (
-    <NavbarGroup key={group.title} onLinkClick={} />
+    <NavbarGroup key={group.title} group={group} />
   ));
 
   return (
