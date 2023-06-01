@@ -48,7 +48,7 @@ export default function NavbarGroup({ group }: NavbarGroupCategoryProps) {
   return (
     <div
       className={cx(classes.category, {
-        [classes.categoryCollapsed]: false,
+        [classes.categoryCollapsed]: collapsed,
       })}
     >
       <button
@@ -69,7 +69,7 @@ export default function NavbarGroup({ group }: NavbarGroupCategoryProps) {
         </Text>
       </button>
 
-      {categorized}
+      {!collapsed && categorized}
     </div>
   );
 }

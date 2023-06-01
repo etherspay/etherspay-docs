@@ -1,6 +1,7 @@
 import { IconCurrencyBitcoin } from "@tabler/icons-react";
 import { SERVICES_CATEGORIES } from "../settings/categories/services";
 import { Category, MdxNode } from "../settings/types";
+import { categorized } from "../settings";
 
 export interface DocsQuery {
   allMdx: {
@@ -42,11 +43,25 @@ function groupDocs(nodes: MdxNode[]) {
       return;
     }
 
+    // If the category already exists, add the node to it
+    if (
+      // The category exists in the group
+      groups
+        .find((g) => g.title === group)!
+        .categories.some((c) => c.title === category)
+    ) {
+      groups
+        .find((g) => g.title === group)!
+        .categories.find((c) => c.title === category)!
+        .nodes.push(node);
+      return;
+    }
+
     groups
       .find((g) => g.title === group)!
       .categories.push({
         title: category,
-        icon: IconCurrencyBitcoin,
+        icon: categorized[group].categories[category].icon,
         nodes: [node],
       });
   });
