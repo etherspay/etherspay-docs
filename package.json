@@ -28,6 +28,7 @@
     "@mdx-js/react": "^2.3.0",
     "@tabler/icons-react": "^2.20.0",
     "gatsby": "^5.10.0",
+    "gatsby-plugin-emotion": "^8.10.0",
     "gatsby-plugin-image": "^3.10.0",
     "gatsby-plugin-manifest": "^5.10.0",
     "gatsby-plugin-mantine": "^5.0.0",
