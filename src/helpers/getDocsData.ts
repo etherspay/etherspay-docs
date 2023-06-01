@@ -1,6 +1,6 @@
 import { IconCurrencyBitcoin } from "@tabler/icons-react";
 import { SERVICES_CATEGORIES } from "../settings/categories/services";
-import { Category, MdxNode } from "../settings/types";
+import { Category, Group, MdxNode } from "../settings/types";
 import { categorized } from "../settings";
 
 export interface DocsQuery {
@@ -9,11 +9,6 @@ export interface DocsQuery {
       node: MdxNode;
     }[];
   };
-}
-
-export interface Group {
-  title: string;
-  categories: Category[];
 }
 
 function groupDocs(nodes: MdxNode[]) {
@@ -32,6 +27,7 @@ function groupDocs(nodes: MdxNode[]) {
       groups.push({
         title: group,
         categories: [],
+        uncategorized: [],
       });
     }
 
@@ -54,6 +50,13 @@ function groupDocs(nodes: MdxNode[]) {
         .find((g) => g.title === group)!
         .categories.find((c) => c.title === category)!
         .nodes.push(node);
+      return;
+    }
+
+    // If there isn't a category, return uncategorized node
+    if (!category || !categorized[group].categories[category]) {
+      groups.find((g) => g.title === group)!.uncategorized?.push(node);
+
       return;
     }
 

@@ -15,4 +15,8 @@ export const categorized: CategoryMap = {
     categories: SERVICES_CATEGORIES,
     order: [],
   },
+  api: {
+    categories: {},
+    order: [],
+  },
 };

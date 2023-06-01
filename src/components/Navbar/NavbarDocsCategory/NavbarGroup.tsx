@@ -18,6 +18,21 @@ export default function NavbarGroup({ group }: NavbarGroupCategoryProps) {
   const [collapsed, setCollapsed] = useState(false);
   const itemRefs = useRef<Record<string, HTMLElement>>({});
 
+  const uncategorized = group.uncategorized?.map((node) => (
+    <Link
+      key={node.frontmatter.slug}
+      className={classes.link}
+      activeClassName={classes.linkActive}
+      to={node.frontmatter.slug}
+
+      // ref={(r) => {
+      //   itemRefs.current[node.frontmatter.slug] = r;
+      // }}
+    >
+      {node.frontmatter.title}
+    </Link>
+  ));
+
   const categorized = group.categories?.map((category) => {
     const links = category.nodes.map((node) => (
       <Link
@@ -70,6 +85,7 @@ export default function NavbarGroup({ group }: NavbarGroupCategoryProps) {
       </button>
 
       {!collapsed && categorized}
+      {!collapsed && uncategorized}
     </div>
   );
 }

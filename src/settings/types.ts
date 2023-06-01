@@ -15,5 +15,5 @@ export interface Category {
 export interface Group {
   title: string;
   categories: Category[];
-  nodes?: MdxNode[];
+  uncategorized?: MdxNode[];
 }
