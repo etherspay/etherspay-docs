@@ -122,7 +122,6 @@ export default function Layout({
               <Header
                 navbarOpened={navBar}
                 toggleNavbar={() => {
-                  console.log("toggle navbar");
                   setNavBar((o) => !o);
                 }}
               />
