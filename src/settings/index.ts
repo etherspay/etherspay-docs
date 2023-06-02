@@ -1,4 +1,4 @@
-import { SERVICES_CATEGORIES } from "./categories/services";
+import { API_CATEGORIES, SERVICES_CATEGORIES } from "./categories/services";
 import { Category } from "./types";
 
 type CategoryMap = {
@@ -16,7 +16,7 @@ export const categorized: CategoryMap = {
     order: [],
   },
   api: {
-    categories: {},
+    categories: API_CATEGORIES,
     order: [],
   },
 };
