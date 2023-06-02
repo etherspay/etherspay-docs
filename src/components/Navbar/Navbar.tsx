@@ -3,7 +3,7 @@ import { ScrollArea, rem } from "@mantine/core";
 import NavbarMainLink from "./NavbarMainLink/NavbarMainLink";
 import useStyles from "./Navbar.styles";
 import { IconRocket, IconCode, IconHandRock } from "@tabler/icons-react";
-import NavbarDocsCategory from "./NavbarDocsCategory/NavbarDocsCategory";
+import NavbarGroup from "./NavbarDocsCategory/NavbarGroup";
 import { Group } from "../../settings/types";
 import { getDocsData } from "../../helpers/getDocsData";
 
@@ -29,7 +29,7 @@ const mainLinks = [
 ];
 
 interface NavbarProps {
-  data: ReturnType<typeof getDocsData>[];
+  data: Group[];
   opened: boolean;
   onClose(): void;
 }
@@ -49,8 +49,10 @@ export default function Navbar({ data, opened, onClose }: NavbarProps) {
     </NavbarMainLink>
   ));
 
-  const docs = data.map((group: Group[]) => (
-    <NavbarDocsCategory group={group} key={group.group} onLinkClick={onClose} />
+  // data var is an object with group name as key and array of docs as value, convert it to array of arrays
+
+  const docs = data.map((group: Group) => (
+    <NavbarGroup key={group.title} group={group} />
   ));
 
   return (
@@ -58,7 +60,7 @@ export default function Navbar({ data, opened, onClose }: NavbarProps) {
       <ScrollArea h="100vh" type="scroll">
         <div className={classes.body}>
           {main}
-          {/* <div className={classes.docs}>{docs}</div> */}
+          <div className={classes.docs}>{docs}</div>
         </div>
       </ScrollArea>
     </nav>

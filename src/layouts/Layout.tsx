@@ -8,8 +8,9 @@ import {
   Box,
   Container,
   Anchor,
+  em,
 } from "@mantine/core";
-import { useHotkeys, useLocalStorage } from "@mantine/hooks";
+import { useHotkeys, useLocalStorage, useMediaQuery } from "@mantine/hooks";
 import { SpotlightProvider, spotlight } from "@mantine/spotlight";
 import { actions } from "../constants/SpotlightActions";
 import Header from "../components/Header/Header";
@@ -18,8 +19,12 @@ import { Footer } from "../components/Footer/Footer";
 import { Link, graphql, useStaticQuery } from "gatsby";
 import Navbar from "../components/Navbar/Navbar";
 import { getDocsData } from "../helpers/getDocsData";
-import { NAVBAR_WIDTH } from "../components/Navbar/Navbar.styles";
+import {
+  NAVBAR_BREAKPOINT,
+  NAVBAR_WIDTH,
+} from "../components/Navbar/Navbar.styles";
 import MDXProvider from "../components/MdxPage/MdxProvider/MdxProvider";
+import TableOfContents from "../components/MdxPage/TableOfContents/TableOfContents";
 
 const THEME_KEY = "mantine-color-scheme";
 
@@ -29,6 +34,7 @@ const query = graphql`
       edges {
         node {
           id
+          tableOfContents
           frontmatter {
             title
             group
@@ -116,13 +122,12 @@ export default function Layout({
               <Header
                 navbarOpened={navBar}
                 toggleNavbar={() => {
-                  console.log("toggle navbar");
                   setNavBar((o) => !o);
                 }}
               />
               {!hideNavbar && (
                 <Navbar
-                  data={[]}
+                  data={data}
                   opened={navBar}
                   onClose={() => setNavBar(false)}
                 />
@@ -130,7 +135,7 @@ export default function Layout({
 
               {navBar && (
                 <Navbar
-                  data={[]}
+                  data={data}
                   opened={navBar}
                   onClose={() => setNavBar(false)}
                 />
@@ -139,7 +144,13 @@ export default function Layout({
               <div
                 style={{
                   marginTop: rem(HEADER_HEIGHT),
-                  marginLeft: rem(hideNavbar ? 0 : NAVBAR_WIDTH),
+                  marginLeft: rem(
+                    hideNavbar
+                      ? 0
+                      : useMediaQuery(`(max-width: ${em(NAVBAR_BREAKPOINT)})`)
+                      ? 0
+                      : NAVBAR_WIDTH
+                  ),
                 }}
               >
                 {/* <LayoutInner location={location}>{children}</LayoutInner> */}
@@ -147,9 +158,22 @@ export default function Layout({
                 {homePage ? (
                   children
                 ) : (
-                  <Container size={1100} pt={30} pb={rem(80)}>
-                    <MDXProvider>{children}</MDXProvider>
-                  </Container>
+                  <>
+                    <div>
+                      <TableOfContents
+                        headings={[
+                          {
+                            value: "Heading 1",
+                            depth: 1,
+                          },
+                        ]}
+                        withTabs={false}
+                      />
+                    </div>
+                    <Container size={1100} pt={30} pb={rem(80)}>
+                      <MDXProvider>{children}</MDXProvider>
+                    </Container>
+                  </>
                 )}
                 {!hideFooter && <Footer />}
               </div>

@@ -107,15 +107,15 @@ export default createStyles((theme) => ({
   },
 
   linkActive: {
-    borderLeftColor: theme.colors.blue[7],
+    borderLeftColor: theme.colors.teal[7],
     backgroundColor:
       theme.colorScheme === "dark"
-        ? theme.fn.rgba(theme.colors.blue[9], 0.45)
-        : theme.colors.blue[0],
+        ? theme.fn.rgba(theme.colors.teal[9], 0.45)
+        : theme.colors.teal[0],
     color:
       theme.colorScheme === "dark"
-        ? theme.colors.blue[1]
-        : theme.colors.blue[8],
+        ? theme.colors.teal[1]
+        : theme.colors.teal[8],
     fontWeight: 500,
   },
 
